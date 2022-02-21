@@ -1,4 +1,14 @@
-export const infosNavLinksIfIsLoging = [
+
+interface arrayInfoLink {
+    href: string,
+    class: string,
+    display: string,
+    classIcon: string,
+    text: string
+}
+
+// array for the component LinksList (links list of the header)
+export const navLinkListInfosIfConnected : arrayInfoLink[] = [
     {
         href: "/sign-in",
         class: "main-nav-item",
@@ -22,7 +32,10 @@ export const infosNavLinksIfIsLoging = [
     }
 ];
 
-export const infosNavLinksIfIsNoLoging = [
+
+
+// array for the component LinksList (links list of the header)
+export const navLinkListInfosIfOffline : arrayInfoLink[] = [
     {
         href: "/sign-in",
         class: "main-nav-item",
@@ -46,7 +59,15 @@ export const infosNavLinksIfIsNoLoging = [
     }
 ]
 
-export const dataAccount = [
+
+
+interface arrayDataAccount {
+    title: string,
+    value: string,
+    status: string,
+}
+// array for the component Account (of User page)
+export const dataAccount  : arrayDataAccount[]= [
     {
         title : "Argent Bank Checking (x8349)",
         value : "$2,082.79",

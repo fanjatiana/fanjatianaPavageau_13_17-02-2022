@@ -1,14 +1,14 @@
 import React from 'react';
 import SignLink from "../components/SignLink"
-import { infosNavLinksIfIsLoging, infosNavLinksIfIsNoLoging } from "../js/arrays.js"
+import { navLinkListInfosIfConnected, navLinkListInfosIfOffline } from "../constants/arrays"
 
 const LinksList = () => {
-    const isLoging: boolean = true; // gestion du state
+    const isLoging: boolean = false; // gestion du state
     
     return <div>
         {
             isLoging ?
-                infosNavLinksIfIsLoging.map((obj) =>
+            navLinkListInfosIfConnected.map((obj) =>
                     <SignLink
                         href={obj.href}
                         class={obj.class}
@@ -18,7 +18,7 @@ const LinksList = () => {
                     />
                 )
                 :
-                infosNavLinksIfIsNoLoging.map((obj) =>
+                navLinkListInfosIfOffline.map((obj) =>
                     <SignLink
                         href={obj.href}
                         class={obj.class}

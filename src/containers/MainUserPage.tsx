@@ -1,6 +1,6 @@
 import React from 'react';
 import Account from "../components/Account";
-import { dataAccount } from "../js/arrays.js"
+import { dataAccount } from "../constants/arrays"
 
 const MainUserPage = () => {
     return (
