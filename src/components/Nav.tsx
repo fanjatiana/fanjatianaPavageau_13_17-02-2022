@@ -3,9 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../images/argentBankLogo.png'
 import LinksList from "../components/LinksList"
 
-
 const Nav = () => {
-
     return (
         <nav className="main-nav">
             <NavLink to="/" className="main-nav-logo" >

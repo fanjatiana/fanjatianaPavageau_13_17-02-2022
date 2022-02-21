@@ -9,7 +9,6 @@ const SignLink = (props: { href: string, class: string, classIcon: string, displ
                 {props.text}
             </NavLink>
         </>
-
     )
 };
 
