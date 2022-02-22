@@ -1,10 +1,7 @@
 import React from 'react';
 import '../styles/main.css'
-import IconMoney from '../images/icon-money.png'
-import IconChat from '../images/icon-chat.png'
-import IconSecurity from '../images/icon-security.png'
-
 import FeatureItem from '../components/FeatureItem'
+import { infosFeatureItem } from '../constants/arrays';
 
 const MainHome = () => {
     return (
@@ -20,22 +17,15 @@ const MainHome = () => {
             </div>
             <section className="features">
                 <h2 className="sr-only">Features</h2>
-                <FeatureItem
-                    icon={IconChat}
-                    title="You are our #1 priority"
-                    text=" Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
-                />
-                <FeatureItem
-                    icon={IconMoney}
-                    title="More savings means higher rates"
-                    text="The more you save with us, the higher your interest rate will be!"
-                />
-                <FeatureItem
-                    icon={IconSecurity}
-                    title="Security you can trust"
-                    text=" We use top of the line encryption to make sure your data and money
-                    is always safe."
-                />
+                {
+                    infosFeatureItem.map((obj) =>
+                        <FeatureItem
+                            icon={obj.icon}
+                            title={obj.title}
+                            text={obj.text}
+                        />
+                    )
+                }
             </section>
         </main>
     );

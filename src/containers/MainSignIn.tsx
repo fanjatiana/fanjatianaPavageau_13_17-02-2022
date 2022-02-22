@@ -3,6 +3,7 @@ import '../styles/main.css';
 
 import Input from '../components/Input'
 import { NavLink } from 'react-router-dom';
+import { infosInput } from '../constants/arrays';
 
 const MainSignIn = () => {
     return (
@@ -11,26 +12,17 @@ const MainSignIn = () => {
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
                 <form>
-                    <Input
-                        class="input-wrapper"
-                        textLabel="Username"
-                        typeInput='text'
-                        idInput='username'
-                    />
-                    <Input
-                        class="input-wrapper"
-                        textLabel="Password"
-                        typeInput='password'
-                        idInput='password'
-                    />
-                    <Input
-                        class="input-remember"
-                        textLabel="Remember me"
-                        typeInput='checkbox'
-                        idInput='remember-me'
-                    />
+                    {
+                        infosInput.map((obj) =>
+                            <Input
+                                class={obj.class}
+                                textLabel={obj.textLabel}
+                                typeInput={obj.typeInput}
+                                idInput={obj.idInput}
+                            />)
+                    }
                     {/*PLACEHOLDER DUE TO STATIC SITE*/}
-                    <NavLink to ="/user" className="sign-in-button">Sign In</NavLink>
+                    <NavLink to="/user" className="sign-in-button">Sign In</NavLink>
                     {/*SHOULD BE THE BUTTON BELOW
                     <!-- <button className="sign-in-button">Sign In</button> -->
                    <!--  --> */}
