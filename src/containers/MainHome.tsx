@@ -20,6 +20,7 @@ const MainHome = () => {
                 {
                     infosFeatureItem.map((obj) =>
                         <FeatureItem
+                        key={obj.title}
                             icon={obj.icon}
                             title={obj.title}
                             text={obj.text}
