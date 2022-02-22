@@ -4,12 +4,13 @@ import { navLinkListInfosIfConnected, navLinkListInfosIfOffline } from "../const
 
 const LinksList = () => {
     const isLoging: boolean = false; // gestion du state
-    
+
     return <div>
         {
             isLoging ?
-            navLinkListInfosIfConnected.map((obj) =>
+                navLinkListInfosIfConnected.map((obj) =>
                     <SignLink
+                        key={obj.href}
                         href={obj.href}
                         class={obj.class}
                         display={obj.display}
@@ -20,6 +21,7 @@ const LinksList = () => {
                 :
                 navLinkListInfosIfOffline.map((obj) =>
                     <SignLink
+                        key={obj.href}
                         href={obj.href}
                         class={obj.class}
                         display={obj.display}
