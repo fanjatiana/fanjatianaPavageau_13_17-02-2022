@@ -1,5 +1,3 @@
-
-
 .main {
   flex: 1;
 }
@@ -58,7 +56,7 @@
 }
 
 .hero {
-  background-image: url('../images/bank-tree.jpeg');
+  background-image: url("../images/bank-tree.jpeg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -87,3 +85,40 @@
   font-size: 0.9rem;
 }
 
+.error_404 {
+  width: 90%;
+  margin: auto;
+}
+
+.block_img {
+  width: 50%;
+  margin: auto;
+}
+.error_404 img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.block_link {
+  width: 100%;
+  margin: 2em auto;
+}
+
+.link_back-to-home {
+  text-decoration: none;
+  color: #2c3e50;
+  font-size: 1em;
+  background-color: #42b983;
+  padding: 1em;
+  border-radius: 10px;
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 0.2s;
+}
+
+.link_back-to-home:hover {
+  transform: scale(1.8);
+  background-color: #024427;
+  color: #fff;
+}
