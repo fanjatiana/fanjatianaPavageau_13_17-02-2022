@@ -13,7 +13,6 @@ const MainUserPage = () => {
             {
                 dataAccount.map((obj) =>
                     <Account
-                        key={obj.title}
                         title={obj.title}
                         value={obj.value}
                         status={obj.status}

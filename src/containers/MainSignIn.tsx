@@ -15,7 +15,6 @@ const MainSignIn = () => {
                     {
                         infosInput.map((obj) =>
                             <Input
-                            key={obj.idInput}
                                 class={obj.class}
                                 textLabel={obj.textLabel}
                                 typeInput={obj.typeInput}
