@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { infosInput } from '../constants/arrays';
 
 const MainSignIn = () => {
+
+    
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">
