@@ -52,6 +52,7 @@ const Login = () => {
     // envoie des données entrées dans formulaire
     const onSubmit = (credentials: object) => {
         postInfoslogin(credentials);
+        console.log(credentials)
     }
 
     return (

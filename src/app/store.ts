@@ -1,18 +1,18 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-import tokenReducer from '../features/token/tokenSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+
+import tokenReducer from "../features/token/tokenSlice";
 import usersReducer from "../features/user/usersSlice";
-import {apiSlice} from '../features/apiSlice'
+import { apiSlice } from "../features/apiSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    token:tokenReducer,
-    user : usersReducer, 
-    [apiSlice.reducerPath] :apiSlice.reducer
+    token: tokenReducer,
+    user: usersReducer,
+    /*[apiSlice.reducerPath] :apiSlice.reducer
   },
   middleware :(getDefaultMiddleware) =>{
     return getDefaultMiddleware().concat(apiSlice.middleware);
+  },*/
   },
 });
 

@@ -32,6 +32,7 @@ export const useFetch = () => {
         .then((data) => {
           console.log("Success:", data);
           setData(data);
+          console.log(data.body)
           dispatch(getInfosUsers(data.body));
           setLoading(false);
         });
