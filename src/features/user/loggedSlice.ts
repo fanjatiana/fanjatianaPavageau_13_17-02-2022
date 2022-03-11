@@ -1,0 +1,26 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { StringifyOptions } from "querystring";
+
+interface UserState{
+    isLogged : boolean
+  }
+  
+  const initialState : UserState = {
+    isLogged : false
+  }
+  
+  
+  const loginStatusSlice = createSlice({
+    name:"login",
+    initialState,
+    reducers:{
+      getInfoLoginStatus : (state,action : PayloadAction<boolean>)=> {
+        state.isLogged= action.payload;
+      }
+    }
+    
+  })
+  
+  export const {getInfoLoginStatus} = loginStatusSlice.actions;
+  export default loginStatusSlice.reducer;
+  

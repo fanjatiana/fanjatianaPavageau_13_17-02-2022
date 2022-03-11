@@ -41,10 +41,12 @@ const Login = () => {
             .then((data) => {
                 console.log('Success:', data);
                 dispatch(getToken(data.body.token));
+                localStorage.setItem("Bearer", data.body.token)
                 navigate('/user');
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error("sdgs" + error.message);
+
             });
 
     };
@@ -53,6 +55,10 @@ const Login = () => {
     const onSubmit = (credentials: object) => {
         postInfoslogin(credentials);
         console.log(credentials)
+    }
+
+    const handleChangeChekbox = () => {
+         console.log(localStorage.setItem(userEmail, userPassword));
     }
 
     return (
@@ -71,7 +77,7 @@ const Login = () => {
                     <p>{errors.password && "password is required"}</p>
                 </div>
                 <div className="input-remember">
-                    <input type="checkbox" id="remember-me" />
+                    <input type="checkbox" id="remember-me"  onChange = {handleChangeChekbox}/>
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
                 {/*PLACEHOLDER DUE TO STATIC SITE -->
