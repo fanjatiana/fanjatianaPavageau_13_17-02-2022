@@ -5,6 +5,7 @@ import { useFetch } from '../api/fetchUser';
 import { useAppSelector } from '../app/hooks';
 import Account from "../components/Account";
 import { dataAccount } from "../constants/arrays"
+import { getInfoLoginStatus } from '../features/user/loggedSlice';
 import { getInfosUsers } from '../features/user/usersSlice';
 
 import NotFound from '../pages/NotFound';
@@ -12,12 +13,13 @@ import NotFound from '../pages/NotFound';
 const MainUserPage = () => {
 
     const { isLoading, data, error } = useFetch();
+    const [isLoging, setIsLoging] = useState(false);
     const infosUser = useAppSelector((state) => state.user);
     const dispatch = useDispatch();
-    const infoToken = useAppSelector((state) => state.token.value);
+    //const infoToken = useAppSelector((state) => state.token.value);
+    const infoToken = localStorage.getItem("Bearer")
 
     const [isEditName, setIsEditName] = useState(false);
-
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
 
@@ -26,15 +28,12 @@ const MainUserPage = () => {
         lastName: string
     }
 
-
     const handleClickToSave = () => {
 
         const newInfosUser = {
             firstName: userFirstName,
             lastName: userLastName
         }
-
-
 
         const putInfosUser = async () => {
 
@@ -54,13 +53,14 @@ const MainUserPage = () => {
                     if (response.ok) {
                         console.log(data.body)
                         dispatch(getInfosUsers(data.body));
+                        setIsLoging(true)
                     }
                 })
         };
+
         putInfosUser();
         setIsEditName(false)
     }
-
     const handleClickToCancel = () => {
         setIsEditName(false)
     };
@@ -70,8 +70,7 @@ const MainUserPage = () => {
 
     if (error) return <NotFound />;
 
-    if (data) {
-
+    if (data && infoToken) {
         const userIdentity = infosUser.firstName + " " + infosUser.lastName;
 
         return (
@@ -91,8 +90,6 @@ const MainUserPage = () => {
                         <button onClick={handleClickToCancel}>Cancel</button>
                     </div>
                     }
-
-
                 </div>
                 <h2 className="sr-only">Accounts</h2>
                 {

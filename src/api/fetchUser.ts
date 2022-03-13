@@ -5,7 +5,8 @@ import { getInfosUsers } from "../features/user/usersSlice";
 
 
 export const useFetch = () => {
-  const infoToken = useAppSelector((state) => state.token.value);
+  //const infoToken = useAppSelector((state) => state.token.value);
+  const infoToken = localStorage.getItem("Bearer")
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setLoading] = useState(true);

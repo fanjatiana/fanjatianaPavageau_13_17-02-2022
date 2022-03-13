@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { dataAccount } from '../constants/arrays';
 import { getToken } from '../features/token/tokenSlice';
+import { getInfoLoginStatus } from './user/loggedSlice';
 
 
 
@@ -11,11 +12,15 @@ const Login = () => {
 
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    const [isLoging, setIsLoging] = useState(false);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate()
 
     type FormData = {
         email: string,
         password: string
     }
+
     // gestion de la validité du formulaire (required,error)
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         defaultValues: {
@@ -23,9 +28,6 @@ const Login = () => {
             password: ""
         }
     });
-
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate()
 
     const postInfoslogin = async (credentials: object) => {
         console.log(credentials)
@@ -41,6 +43,7 @@ const Login = () => {
             .then((data) => {
                 console.log('Success:', data);
                 dispatch(getToken(data.body.token));
+                setIsLoging(true)
                 localStorage.setItem("Bearer", data.body.token)
                 navigate('/user');
             })
@@ -54,7 +57,8 @@ const Login = () => {
     // envoie des données entrées dans formulaire
     const onSubmit = (credentials: object) => {
         postInfoslogin(credentials);
-        console.log(credentials)
+        dispatch(getInfoLoginStatus(true));
+        setIsLoging(true)
     }
 
     const handleChangeChekbox = () => {
