@@ -33,7 +33,9 @@ export const useFetch = () => {
         .then((data) => {
           console.log("Success:", data);
           setData(data);
-          console.log(data.body)
+          console.log(data.body);
+          localStorage.setItem("Bearer", infoToken);
+        
           dispatch(getInfosUsers(data.body));
           setLoading(false);
         });

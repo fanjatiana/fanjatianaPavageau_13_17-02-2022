@@ -12,6 +12,7 @@ const Login = () => {
 
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState("false")
     const [isLoging, setIsLoging] = useState(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
@@ -44,7 +45,7 @@ const Login = () => {
                 console.log('Success:', data);
                 dispatch(getToken(data.body.token));
                 setIsLoging(true)
-                localStorage.setItem("Bearer", data.body.token)
+                localStorage.setItem("Bearer", data.body.token);
                 navigate('/user');
             })
             .catch((error) => {
@@ -58,11 +59,20 @@ const Login = () => {
     const onSubmit = (credentials: object) => {
         postInfoslogin(credentials);
         dispatch(getInfoLoginStatus(true));
-        setIsLoging(true)
+        setIsLoging(true);
+    
     }
+  
 
+    
     const handleChangeChekbox = () => {
-         console.log(localStorage.setItem(userEmail, userPassword));
+
+      
+        const infoEmail = localStorage.getItem("email");
+        const infoPassword = localStorage.getItem("password");
+
+        console.log(infoEmail,infoPassword)
+      
     }
 
     return (
@@ -72,16 +82,16 @@ const Login = () => {
                 method="POST">
                 <div className="input-wrapper">
                     <label htmlFor="username">Username</label>
-                    <input type="text" id="username" {...register("email", { required: true })} onChange={e => { return setUserEmail(e.target.value) }} />
+                    <input type="text" id="username"  {...register("email", { required: true })} onChange={e => { setUserEmail(e.target.value); localStorage.setItem("email", userEmail) }} />
                     <p>{errors.email?.type === 'required' && "email is required"}</p>
                 </div>
                 <div className="input-wrapper">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password"  {...register("password", { required: true })} onChange={e => { return setUserPassword(e.target.value) }} />
+                    <input type="password" id="password"  {...register("password", { required: true })} onChange={e => { setUserPassword(e.target.value);localStorage.setItem("password", userPassword) }} />
                     <p>{errors.password && "password is required"}</p>
                 </div>
                 <div className="input-remember">
-                    <input type="checkbox" id="remember-me"  onChange = {handleChangeChekbox}/>
+                    <input type="checkbox" id="remember-me"  onChange = {() => handleChangeChekbox() }/>
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
                 {/*PLACEHOLDER DUE TO STATIC SITE -->

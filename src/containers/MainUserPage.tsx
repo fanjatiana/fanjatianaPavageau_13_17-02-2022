@@ -13,6 +13,7 @@ import NotFound from '../pages/NotFound';
 const MainUserPage = () => {
 
     const { isLoading, data, error } = useFetch();
+    console.log(data)
     const [isLoging, setIsLoging] = useState(false);
     const infosUser = useAppSelector((state) => state.user);
     const dispatch = useDispatch();

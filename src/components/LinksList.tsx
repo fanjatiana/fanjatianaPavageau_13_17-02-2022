@@ -11,10 +11,11 @@ const LinksList = () => {
     const dispatch = useAppDispatch();
     const infosUser = useAppSelector((state) => state.user);
     const infoStatus = useAppSelector(state => state.login.isLogged);
+    const token = localStorage.getItem("Bearer");
 
     return <div>
         {
-            infoStatus ? (
+            infoStatus && token ? (
                 <div>
                     <ul>
                         <li>
@@ -25,7 +26,7 @@ const LinksList = () => {
                         </li>
                         <li>
                             <NavLink to="/sign-in" className="main-nav-item" onClick={() => {
-                                localStorage.removeItem("Bearer"); dispatch(getInfoLoginStatus(false))
+                                 dispatch(getInfoLoginStatus(false));localStorage.removeItem("Bearer")
                             }} >
                                 <i className="fa fa-sign-out"></i>
                                 Sign Out
