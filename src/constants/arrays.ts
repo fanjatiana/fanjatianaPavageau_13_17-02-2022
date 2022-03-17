@@ -1,13 +1,9 @@
 import IconMoney from "../images/icon-money.png";
 import IconChat from "../images/icon-chat.png";
 import IconSecurity from "../images/icon-security.png";
+import { arrayDataAccount, arrayFeatureItem } from "../typeScript/interfaces";
 
 // array for the component <Account/> (of User page)
-interface arrayDataAccount {
-  title: string;
-  value: string;
-  status: string;
-}
 
 export const dataAccount: arrayDataAccount[] = [
   {
@@ -29,11 +25,6 @@ export const dataAccount: arrayDataAccount[] = [
 
 
 // array of object for the component <FeatureItem/> (of Home page)
-interface arrayFeatureItem {
-  icon: string;
-  title: string;
-  text: string;
-}
 
 export const infosFeatureItem: arrayFeatureItem[] = [
   {

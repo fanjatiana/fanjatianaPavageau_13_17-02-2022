@@ -14,7 +14,7 @@ const LoginLinks = () => {
         {
             infoStatus && token ? (
                 <div>
-                    <ul>
+                    <ul className='links_list'>
                         <li>
                             <NavLink to="/Profile" className="main-nav-item" onClick={() => dispatch(getInfoLoginStatus(true))} >
                                 <i className="fa fa-user-circle"></i>

@@ -128,3 +128,7 @@
   font-weight: 800;
   font-size: 0.9em;
 }
+
+.links_list{
+  list-style-type: none;
+}

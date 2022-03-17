@@ -1,7 +1,7 @@
 import {createSlice,PayloadAction } from "@reduxjs/toolkit";
 
 
-interface TokenState{
+type TokenState = {
   value:string | null;
 }
 

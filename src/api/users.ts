@@ -1,11 +1,4 @@
-interface InfosUsers {
-    firstName:string,
-    lastName:string,
-    email: string,
-    password: string,
-}
-
-
+import { InfosUsers } from "../typeScript/interfaces";
 
 export const users: InfosUsers[] = [
     {
