@@ -1,12 +1,15 @@
-import React from 'react';
 import '../styles/mediaQueries.css'
-import MainSignIn from '../containers/MainSignIn'
+import Login from '../components/Login';
 
 const SignIn = () => {
     return (
-        <>
-            <MainSignIn />
-        </>
+        <main className="main bg-dark">
+        <section className="sign-in-content">
+            <i className="fa fa-user-circle sign-in-icon"></i>
+            <h2>Sign In</h2>
+            <Login />
+        </section>
+    </main>
     );
 };
 

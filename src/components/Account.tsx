@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Account = (props : {title:string, value:string, status:string}) => {
     return (
         <section className="account">

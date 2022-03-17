@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import SignLink from "../components/SignLink"
-import { navLinkListInfosIfConnected, navLinkListInfosIfOffline } from "../constants/arrays";
-import { getInfoLoginStatus } from '../features/user/loggedSlice';
+import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 
 
-const LinksList = () => {
+const LoginLinks = () => {
 
     const dispatch = useAppDispatch();
     const infosUser = useAppSelector((state) => state.user);
@@ -47,4 +44,4 @@ const LinksList = () => {
 }
 
 
-export default LinksList;
+export default LoginLinks;

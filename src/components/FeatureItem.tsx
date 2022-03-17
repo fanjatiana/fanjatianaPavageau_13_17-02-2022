@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/main.css'
 
 const FeatureItem = ( props : {icon:string, title:string, text:string}) => {

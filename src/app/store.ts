@@ -2,19 +2,13 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import tokenReducer from "../features/token/tokenSlice";
 import usersReducer from "../features/user/usersSlice";
-import loginStatusReducer from "../features/user/loggedSlice"
-import { apiSlice } from "../features/apiSlice";
+import loginStatusReducer from "../features/login/loginStatusSlice"
 
 export const store = configureStore({
   reducer: {
     token: tokenReducer,
     user: usersReducer,
     login : loginStatusReducer,
-    /*[apiSlice.reducerPath] :apiSlice.reducer
-  },
-  middleware :(getDefaultMiddleware) =>{
-    return getDefaultMiddleware().concat(apiSlice.middleware);
-  },*/
   },
 });
 

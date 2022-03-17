@@ -1,73 +1,30 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import { useFetch } from '../api/fetchUser';
+import { useFetch } from '../services/fetchUser';
 import { useAppSelector } from '../app/hooks';
-import Account from "../components/Account";
-import { dataAccount } from "../constants/arrays"
-import { getInfoLoginStatus } from '../features/user/loggedSlice';
-import { getInfosUsers } from '../features/user/usersSlice';
+import Account from '../components/Account';
+import { dataAccount } from '../constants/arrays';
+import '../styles/mediaQueries.css'
+import NotFound from './NotFound';
+import { putInfosUser } from '../services/putInfosUser';
 
-import NotFound from '../pages/NotFound';
-
-const MainUserPage = () => {
-
+const Profile = () => {
     const { isLoading, data, error } = useFetch();
-    console.log(data)
     const [isLoging, setIsLoging] = useState(false);
-    const infosUser = useAppSelector((state) => state.user);
-    const dispatch = useDispatch();
-    //const infoToken = useAppSelector((state) => state.token.value);
-    const infoToken = localStorage.getItem("Bearer")
-
     const [isEditName, setIsEditName] = useState(false);
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
-
-    type FormData = {
-        firstName: string,
-        lastName: string
-    }
+    const infosUser = useAppSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const infoToken = localStorage.getItem("Bearer")
 
     const handleClickToSave = () => {
-
-        const newInfosUser = {
-            firstName: userFirstName,
-            lastName: userLastName
-        }
-
-        const putInfosUser = async () => {
-
-            fetch("http://localhost:3001/api/v1/user/profile", {
-                method: "PUT",
-                headers: {
-                    Authorization: `Bearer ${infoToken}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    firstName: userFirstName,
-                    lastName: userLastName
-                }),
-            })
-                .then(async (response) => {
-                    const data = await response.json();
-                    if (response.ok) {
-                        console.log(data.body)
-                        dispatch(getInfosUsers(data.body));
-                        setIsLoging(true)
-                    }
-                })
-        };
-
-        putInfosUser();
+        putInfosUser(infoToken,userFirstName,userLastName,dispatch,setIsLoging);
         setIsEditName(false)
     }
     const handleClickToCancel = () => {
         setIsEditName(false)
     };
-
-
-
 
     if (error) return <NotFound />;
 
@@ -103,11 +60,9 @@ const MainUserPage = () => {
                         />)
                 }
             </main>
-        );
-
+        )
     }
-    return <> is loading </>
-
+    return <> {isLoading} </>
 };
 
-export default MainUserPage;
+export default Profile;

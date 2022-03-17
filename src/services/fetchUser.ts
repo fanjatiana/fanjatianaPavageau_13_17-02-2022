@@ -1,11 +1,9 @@
-import { useAppSelector } from "../app/hooks";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getInfosUsers } from "../features/user/usersSlice";
 
 
 export const useFetch = () => {
-  //const infoToken = useAppSelector((state) => state.token.value);
   const infoToken = localStorage.getItem("Bearer")
   const dispatch = useDispatch();
   const [data, setData] = useState<any[]>([]);

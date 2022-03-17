@@ -1,7 +1,6 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../images/argentBankLogo.png'
-import LinksList from "../components/LinksList"
+import LoginLinks from "../components/LoginLinks"
 
 const Nav = () => {
     return (
@@ -14,7 +13,7 @@ const Nav = () => {
                 />
                 <h1 className="sr-only">Argent Bank</h1>
             </NavLink>
-            <LinksList />
+            <LoginLinks/>
         </nav>
     );
 };

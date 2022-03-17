@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { StringifyOptions } from "querystring";
 
 interface UserState{
     isLogged : boolean
