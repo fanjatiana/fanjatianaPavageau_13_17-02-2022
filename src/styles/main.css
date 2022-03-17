@@ -122,3 +122,9 @@
   background-color: #024427;
   color: #fff;
 }
+
+.error_400{
+  color: #be0b0b;
+  font-weight: 800;
+  font-size: 0.9em;
+}

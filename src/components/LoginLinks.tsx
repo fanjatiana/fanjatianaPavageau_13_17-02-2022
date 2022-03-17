@@ -16,7 +16,7 @@ const LoginLinks = () => {
                 <div>
                     <ul>
                         <li>
-                            <NavLink to="/user" className="main-nav-item" onClick={() => dispatch(getInfoLoginStatus(true))} >
+                            <NavLink to="/Profile" className="main-nav-item" onClick={() => dispatch(getInfoLoginStatus(true))} >
                                 <i className="fa fa-user-circle"></i>
                                 {infosUser.firstName}
                             </NavLink>

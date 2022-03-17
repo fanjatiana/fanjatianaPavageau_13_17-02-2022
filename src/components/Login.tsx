@@ -11,6 +11,7 @@ const Login = () => {
     const [userPassword, setUserPassword] = useState('');
     //const [rememberMe, setRememberMe] = useState("false")
     const [isLoging, setIsLoging] = useState(false);
+    const [userNotFound,setUserNotFound] = useState("")
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
@@ -30,7 +31,7 @@ const Login = () => {
 
     // envoie des données entrées dans formulaire
     const onSubmit = (credentials: object) => {
-        postInfoslogin(credentials, dispatch, setIsLoging, navigate);
+        postInfoslogin(credentials,setUserNotFound, dispatch, setIsLoging, navigate);
         dispatch(getInfoLoginStatus(true));
         setIsLoging(true);
     }
@@ -48,15 +49,18 @@ const Login = () => {
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 method="POST">
+                    <p className='error_400'>{userNotFound}</p>
                 <div className="input-wrapper">
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username"  {...register("email", { required: true })} onChange={e => { setUserEmail(e.target.value); localStorage.setItem("email", userEmail) }} />
                     <p>{errors.email?.type === 'required' && "email is required"}</p>
+                    
                 </div>
                 <div className="input-wrapper">
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password"  {...register("password", { required: true })} onChange={e => { setUserPassword(e.target.value); localStorage.setItem("password", userPassword) }} />
                     <p>{errors.password && "password is required"}</p>
+                    
                 </div>
                 <div className="input-remember">
                     <input type="checkbox" id="remember-me" onChange={() => handleChangeChekbox()} />
