@@ -7,6 +7,7 @@ import { dataAccount } from '../constants/arrays';
 import '../styles/mediaQueries.css'
 import NotFound from './NotFound';
 import { putInfosUser } from '../services/putInfosUser';
+import { Navigate } from 'react-router-dom';
 
 const Profile = () => {
     const { isLoading, data, error } = useFetch();
@@ -25,10 +26,13 @@ const Profile = () => {
     const handleClickToCancel = () => {
         setIsEditName(false)
     };
+  
 
     if (error) return <NotFound />;
 
-    if (data && infoToken) {
+    if (!infoToken)  return <Navigate to = "/Sign-in" />
+
+    if (infoToken) {
         const userIdentity = infosUser.firstName + " " + infosUser.lastName;
 
         return (
@@ -64,7 +68,7 @@ const Profile = () => {
             </main>
         )
     }
-    return <> {isLoading} </>
+    return <>{isLoading}</>
 };
 
 export default Profile;
