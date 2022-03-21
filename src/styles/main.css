@@ -38,7 +38,7 @@
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
+ /* margin-right: 0.5rem;*/
 }
 
 .main-nav-item:hover {
@@ -123,12 +123,34 @@
   color: #fff;
 }
 
-.error_400{
+.error_400 {
   color: #be0b0b;
   font-weight: 800;
   font-size: 0.9em;
 }
 
-.links_list{
+.links_list {
   list-style-type: none;
+  display: flex;
+  padding-left: 0;
 }
+
+.links_list li:first-child{
+  margin-right: 1em;
+}
+
+
+
+.edit-name {
+ display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
+}
+
+.btn_action {
+  margin-left: 1em;
+}
+
+

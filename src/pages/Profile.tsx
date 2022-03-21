@@ -44,8 +44,10 @@ const Profile = () => {
                             <label htmlFor="lastName"></label>
                             <input type="text" id='lastName' placeholder={infosUser.lastName} onChange={e => { return setUserLastName(e.target.value) }} />
                         </div>
-                        <button onClick={handleClickToSave}>Save</button>
-                        <button onClick={handleClickToCancel}>Cancel</button>
+                        <div className='btn_action'>
+                            <button onClick={handleClickToSave}>Save</button>
+                            <button onClick={handleClickToCancel}>Cancel</button>
+                        </div>
                     </div>
                     }
                 </div>
