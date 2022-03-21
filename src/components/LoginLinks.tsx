@@ -12,6 +12,9 @@ const LoginLinks = () => {
     const [isData, setIsData] = useState(data)
     const infosUser = useAppSelector((state) => state.user);
     const token = localStorage.getItem("Bearer");
+
+    /* change the display of the connection links according to the data and the token. 
+    We update the connection status and apply actions to the click of the links */
     return <div>
         {
             data && token ? (

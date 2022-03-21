@@ -5,7 +5,9 @@ import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
     const token = localStorage.getItem("Bearer") !== null;
     const dispatch = useAppDispatch();
+   
     const useAuth = () => {
+        // if there is a token, the connection status changes to true and the token is returned
         if (token) {
             dispatch(getInfoLoginStatus(true))
         } return token
@@ -15,6 +17,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
     let location = useLocation();
     console.log(location)
 
+    // if we have no authentication, redirect to the sign in page and we replace the current url
     if (!auth) {
         return <Navigate to="/Sign-in" state={{ from: location }} replace />;
     };

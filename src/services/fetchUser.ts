@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getInfosUsers } from "../features/user/usersSlice";
 
-
+// function to retrieve user data with token
 export const useFetch = () => {
   const infoToken = localStorage.getItem("Bearer")
   const dispatch = useDispatch();

@@ -11,7 +11,10 @@ const Login = () => {
     const [userPassword, setUserPassword] = useState('');
     const [rememberMe, setRememberMe] = useState("false")
     const [isLoging, setIsLoging] = useState(false);
+    
+    // state for display of an error message if username or password unknown
     const [userNotFound,setUserNotFound] = useState("")
+    
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
@@ -20,7 +23,7 @@ const Login = () => {
         password: string
     }
 
-    // gestion de la validité du formulaire (required,error)
+    // form validity (required,error)
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         defaultValues: {
             email: "",
@@ -29,7 +32,7 @@ const Login = () => {
     });
 
 
-    // envoie des données entrées dans formulaire
+    // submit form data
     const onSubmit = (credentials: object) => {
         postInfoslogin(credentials,setUserNotFound, dispatch, setIsLoging, navigate);
         dispatch(getInfoLoginStatus(true));
@@ -37,7 +40,7 @@ const Login = () => {
     }
 
 
-    // mémoriser les identifiants lorsque la case "Remember Me" a été cochée
+    // remember logins when the "Remember Me" box has been checked
     const handleChangeChekbox = () => {
         const infoEmail = localStorage.getItem("email");
         setRememberMe('true')

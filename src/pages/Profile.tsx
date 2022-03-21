@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFetch } from '../services/fetchUser';
 import { useAppSelector } from '../app/hooks';
@@ -7,12 +7,14 @@ import { dataAccount } from '../constants/arrays';
 import '../styles/mediaQueries.css'
 import NotFound from './NotFound';
 import { putInfosUser } from '../services/putInfosUser';
-import { Navigate } from 'react-router-dom';
 
 const Profile = () => {
     const { isLoading, data, error } = useFetch();
     const [isLoging, setIsLoging] = useState(false);
+
+    // display (state update) of the edit name form when the edit Name button is clicked
     const [isEditName, setIsEditName] = useState(false);
+
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
     const infosUser = useAppSelector((state) => state.user);
@@ -28,7 +30,6 @@ const Profile = () => {
         setIsEditName(false)
     };
   
-
     if (error) return <NotFound />;
 
     if (infoToken) {
