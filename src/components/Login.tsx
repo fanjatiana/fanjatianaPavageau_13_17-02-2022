@@ -9,7 +9,7 @@ const Login = () => {
 
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    //const [rememberMe, setRememberMe] = useState("false")
+    const [rememberMe, setRememberMe] = useState("false")
     const [isLoging, setIsLoging] = useState(false);
     const [userNotFound,setUserNotFound] = useState("")
     const dispatch = useAppDispatch();
@@ -40,8 +40,7 @@ const Login = () => {
     // mémoriser les identifiants lorsque la case "Remember Me" a été cochée
     const handleChangeChekbox = () => {
         const infoEmail = localStorage.getItem("email");
-        const infoPassword = localStorage.getItem("password");
-        console.log(infoEmail, infoPassword)
+        setRememberMe('true')
     }
 
     return (

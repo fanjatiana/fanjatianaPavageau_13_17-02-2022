@@ -11,7 +11,6 @@ const LoginLinks = () => {
     const { isLoading, data, error } = useFetch();
     const [isData, setIsData] = useState(data)
     const infosUser = useAppSelector((state) => state.user);
- 
     const token = localStorage.getItem("Bearer");
     return <div>
         {

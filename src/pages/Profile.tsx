@@ -23,14 +23,13 @@ const Profile = () => {
         putInfosUser(infoToken,userFirstName,userLastName,dispatch,setIsLoging);
         setIsEditName(false)
     }
+    
     const handleClickToCancel = () => {
         setIsEditName(false)
     };
   
 
     if (error) return <NotFound />;
-
-    if (!infoToken)  return <Navigate to = "/Sign-in" />
 
     if (infoToken) {
         const userIdentity = infosUser.firstName + " " + infosUser.lastName;
