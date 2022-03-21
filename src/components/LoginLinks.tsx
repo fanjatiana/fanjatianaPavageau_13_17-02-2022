@@ -1,18 +1,24 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
+import { useFetch } from '../services/fetchUser';
 
 
 const LoginLinks = () => {
 
     const dispatch = useAppDispatch();
+    const { isLoading, data, error } = useFetch();
+    const [isData, setIsData] = useState(data)
     const infosUser = useAppSelector((state) => state.user);
-    const infoStatus = useAppSelector(state => state.login.isLogged);
+    // const infoStatus = useAppSelector(state => state.login.isLogged);
     const token = localStorage.getItem("Bearer");
+
+    console.log(data)
 
     return <div>
         {
-            infoStatus && token ? (
+            data && token ? (
                 <div>
                     <ul className='links_list'>
                         <li>
@@ -23,7 +29,7 @@ const LoginLinks = () => {
                         </li>
                         <li>
                             <NavLink to="/sign-in" className="main-nav-item" onClick={() => {
-                                 dispatch(getInfoLoginStatus(false));localStorage.removeItem("Bearer")
+                                 dispatch(getInfoLoginStatus(false));localStorage.removeItem("Bearer");setIsData([])
                             }} >
                                 <i className="fa fa-sign-out"></i>
                                 Sign Out
