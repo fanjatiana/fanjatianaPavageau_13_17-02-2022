@@ -3,21 +3,22 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 import { useFetch } from '../services/fetchUser';
+import { UserState } from '../typeScript/interfaces';
 
 
 const LoginLinks = () => {
 
     const dispatch = useAppDispatch();
     const { isLoading, data, error } = useFetch();
-    const [isData, setIsData] = useState(data)
-    const infosUser = useAppSelector((state) => state.user);
-    const token = localStorage.getItem("Bearer");
+    const [isData, setIsData] = useState<object>(data);
+    const infosUser:UserState = useAppSelector((state) => state.user);
+    const token:string|null = localStorage.getItem("Bearer");
 
     /* change the display of the connection links according to the data and the token. 
     We update the connection status and apply actions to the click of the links */
     return <div>
         {
-            data && token ? (
+            isData && token ? (
                 <div>
                     <ul className='links_list'>
                         <li>

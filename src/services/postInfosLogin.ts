@@ -3,9 +3,8 @@ import { getToken } from "../features/token/tokenSlice";
 // function for post authentication data
 export const postInfoslogin = async (
   credentials: object,
-  setUserNotFound:any,
+  setUserNotFoundMessage:any,
   dispatch: Function,
-  setIsLoging: any,
   navigate: Function
 ) => {
   console.log(credentials);
@@ -19,16 +18,15 @@ export const postInfoslogin = async (
   })
     .then((response) =>  response.json())
     .then((data) => {
-      if (data.status === 400) {
-        setUserNotFound("identifiant ou mot de passe inconnu")
+      if (data.status !== 200) {
+        setUserNotFoundMessage("identifiant ou mot de passe inconnu")
       }
       console.log("Success:", data);
       dispatch(getToken(data.body.token));
-      setIsLoging(true);
       localStorage.setItem("Bearer", data.body.token);
       navigate("/Profile");
     })
     .catch((error) => {
-      console.error("sdgs" + error.message);
+      console.error("error" + error.message);
     });
 };

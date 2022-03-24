@@ -4,11 +4,11 @@ import { getInfosUsers } from "../features/user/usersSlice";
 
 // function to retrieve user data with token
 export const useFetch = () => {
-  const infoToken = localStorage.getItem("Bearer")
-  const dispatch = useDispatch();
+  const infoToken : string | null = localStorage.getItem("Bearer")
+  const dispatch = useDispatch<any>();
   const [data, setData] = useState<any[]>([]);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     if (!infoToken) return;
@@ -31,9 +31,7 @@ export const useFetch = () => {
         .then((data) => {
           console.log("Success:", data);
           setData(data);
-          console.log(data.body);
           localStorage.setItem("Bearer", infoToken);
-        
           dispatch(getInfosUsers(data.body));
           setLoading(false);
         });

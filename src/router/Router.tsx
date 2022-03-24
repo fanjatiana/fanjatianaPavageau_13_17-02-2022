@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 
 const Router = () => {
 
+    // securing access to the profile page with a private route
     return (
         <>
             <Routes>

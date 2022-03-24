@@ -7,33 +7,34 @@ import { dataAccount } from '../constants/arrays';
 import '../styles/mediaQueries.css'
 import NotFound from './NotFound';
 import { putInfosUser } from '../services/putInfosUser';
+import { UserState } from '../typeScript/interfaces';
 
 const Profile = () => {
     const { isLoading, data, error } = useFetch();
-    const [isLoging, setIsLoging] = useState(false);
+    const [isLoging, setIsLoging] = useState<boolean>(false);
 
     // display (state update) of the edit name form when the edit Name button is clicked
-    const [isEditName, setIsEditName] = useState(false);
+    const [isEditName, setIsEditName] = useState<boolean>(false);
 
-    const [userFirstName, setUserFirstName] = useState('');
-    const [userLastName, setUserLastName] = useState('');
-    const infosUser = useAppSelector((state) => state.user);
-    const dispatch = useDispatch();
-    const infoToken = localStorage.getItem("Bearer")
+    const [userFirstName, setUserFirstName] = useState<string>('');
+    const [userLastName, setUserLastName] = useState<string>('');
+    const infosUser = useAppSelector<UserState>((state) => state.user);
+    const dispatch = useDispatch<any>();
+    const infoToken: string | null = localStorage.getItem("Bearer")
 
     const handleClickToSave = () => {
-        putInfosUser(infoToken,userFirstName,userLastName,dispatch,setIsLoging);
+        putInfosUser(infoToken, userFirstName, userLastName, dispatch, setIsLoging);
         setIsEditName(false)
     }
-    
+
     const handleClickToCancel = () => {
         setIsEditName(false)
     };
-  
+
     if (error) return <NotFound />;
 
     if (infoToken) {
-        const userIdentity = infosUser.firstName + " " + infosUser.lastName;
+        const userIdentity: string = infosUser.firstName + " " + infosUser.lastName;
 
         return (
             <main className="main bg-dark">

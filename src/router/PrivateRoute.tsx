@@ -3,7 +3,7 @@ import { useAppDispatch} from '../app/hooks';
 import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-    const token = localStorage.getItem("Bearer") !== null;
+    const token:boolean = localStorage.getItem("Bearer") !== null;
     const dispatch = useAppDispatch();
    
     const useAuth = () => {
@@ -13,8 +13,8 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
         } return token
     }
 
-    let auth = useAuth();
-    let location = useLocation();
+    let auth:boolean = useAuth();
+    let location:object = useLocation();
     console.log(location)
 
     // if we have no authentication, redirect to the sign in page and we replace the current url
