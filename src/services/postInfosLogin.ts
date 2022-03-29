@@ -7,7 +7,6 @@ export const postInfoslogin = async (
   dispatch: Function,
   navigate: Function
 ) => {
-  console.log(credentials);
   await fetch("http://localhost:3001/api/v1/user/login", {
     method: "POST",
     headers: {
@@ -25,8 +24,10 @@ export const postInfoslogin = async (
       dispatch(getToken(data.body.token));
       localStorage.setItem("Bearer", data.body.token);
       navigate("/Profile");
+      return data
     })
     .catch((error) => {
       console.error("error" + error.message);
+      return error
     });
 };

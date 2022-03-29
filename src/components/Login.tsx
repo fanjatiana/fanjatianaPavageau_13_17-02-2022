@@ -34,8 +34,8 @@ const Login = () => {
 
     // remember logins when the "Remember Me" box has been checked
     const handleChangeChekbox = () => {
-        const infoEmail:String | null = localStorage.getItem("email");
-        setRememberMe(!rememberMe)
+        setRememberMe(!rememberMe);
+        console.log(rememberMe)
     }
 
     return (
@@ -46,13 +46,13 @@ const Login = () => {
                     <p className='error_400'>{userNotFoundMessage}</p>
                 <div className="input-wrapper">
                     <label htmlFor="username">Username</label>
-                    <input type="text" id="username"  {...register("email", { required: true })} onChange={e => { setUserEmail(e.target.value); localStorage.setItem("email", userEmail) }} />
+                    <input type="text" id="username" value={userEmail} {...register("email", { required: true })} onChange={e => { setUserEmail(e.target.value); localStorage.setItem("email", userEmail) }} />
                     <p>{errors.email?.type === 'required' && "email is required"}</p>
                     
                 </div>
                 <div className="input-wrapper">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password"  {...register("password", { required: true })} onChange={e =>  setUserPassword(e.target.value) }/>
+                    <input type="password" id="password" value={userPassword} {...register("password", { required: true })} onChange={e =>  setUserPassword(e.target.value) }/>
                     <p>{errors.password && "password is required"}</p>
                     
                 </div>

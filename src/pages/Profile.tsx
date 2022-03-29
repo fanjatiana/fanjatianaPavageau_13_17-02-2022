@@ -11,11 +11,8 @@ import { UserState } from '../typeScript/interfaces';
 
 const Profile = () => {
     const { isLoading, data, error } = useFetch();
-    const [isLoging, setIsLoging] = useState<boolean>(false);
-
     // display (state update) of the edit name form when the edit Name button is clicked
     const [isEditName, setIsEditName] = useState<boolean>(false);
-
     const [userFirstName, setUserFirstName] = useState<string>('');
     const [userLastName, setUserLastName] = useState<string>('');
     const infosUser = useAppSelector<UserState>((state) => state.user);
@@ -23,7 +20,7 @@ const Profile = () => {
     const token: string | null = localStorage.getItem("Bearer")
 
     const handleClickToSave = () => {
-        putInfosUser(token, userFirstName, userLastName, dispatch, setIsLoging);
+        putInfosUser(token, userFirstName, userLastName, dispatch);
         setIsEditName(false)
     }
 

@@ -6,7 +6,6 @@ export const putInfosUser = async (
   userFirstName: string,
   userLastName: string,
   dispatch: Function,
-  setIsLoging: any
 ) => {
   fetch("http://localhost:3001/api/v1/user/profile", {
     method: "PUT",
@@ -23,7 +22,6 @@ export const putInfosUser = async (
     if (response.ok) {
       console.log(data.body);
       dispatch(getInfosUsers(data.body));
-      setIsLoging(true);
     }
   });
 };
