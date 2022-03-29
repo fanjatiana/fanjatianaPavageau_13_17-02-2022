@@ -2,8 +2,8 @@ swagger: '2.0'
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: '1.0.0'
-  termsOfService: 'http://swagger.io/terms/'
+  version: 1.0.0
+  termsOfService: http://swagger.io/terms/
 host: localhost:3001
 basePath: /api/v1
 schemes:
@@ -63,8 +63,8 @@ paths:
         - Bearer: []
       tags:
         - User Module
-      summary: User Profile API
-      description: API for fetching a user profile
+      summary: User Profile
+      description: API for fetching data of user profile
       parameters:
         - in: header
           type: string
@@ -75,11 +75,11 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: Data of User profile retrieved successully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
-          description: Invalid Fields
+          description: Bad Request
         '500':
           description: Internal Server Error
     put:
@@ -105,121 +105,108 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: successful request
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
-          description: Invalid Fields
+          description: Bad Request
         '500':
           description: Internal Server Error
-  /user/profile/{accountID}:
+  /user/profile/accounts/{account_id}:
     get:
       security:
         - Bearer: []
       tags:
-      - User Module
-      summary: Account's transactions of the month
+        - User Module
+      summary: User Account API
       description: API for fetching a user Account
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: header
-        type: string
-        name: Authorization
-        description: Attach Bearer JWT token
-        required: true
-      - name: accountID
-        in: path
-        description: ID of the account
-        required: true
-        type: string
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - name: account_id
+          in: path
+          description: account data recovery
+          required: true
+          type: string
       responses:
         '200':
-          description: User profile retrieved successfully
+          description: successful request
           schema:
-              $ref: '#/definitions/LastTransactions'
+            $ref: '#/definitions/LastTransactions'
         '400':
-          description: Invalid Fields
+          description: Bad Request
         '500':
           description: Internal Server Error
-  /user/profile/{accountID}/{Transaction}:   
+  /user/profile/accounts/account_id/transactions/{transaction_id}:
     get:
       security:
         - Bearer: []
       tags:
-      - User Module
-      summary: transaction's details
+        - User Module
+      summary: transaction's details of User account
       description: API for fetching details of a transaction
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - name: accountID
-        in: path
-        description: ID of the account
-        required: true
-        type: string
-      - name: Transaction
-        in: path
-        description: transaction to fetch
-        required: true
-        type: string
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - name: transaction_id
+          in: path
+          description: transaction id
+          required: true
+          type: string
       responses:
         '200':
-          description: Transaction retrieved successully
+          description: successful request
           schema:
-            $ref: "#/definitions/TransactionsDetails"
+            $ref: '#/definitions/Transaction'
         '400':
-          description: Invalid Fields
+          description: Bad Request
         '500':
           description: Internal Server Error
     put:
       security:
         - Bearer: []
       tags:
-      - User Module
+        - User Module
       summary: Update transaction
-      description: API for updating a user Transaction
+      description: Update user Transaction
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - name: accountID
-        in: path
-        description: ID of the account
-        required: true
-        type: string
-      - name: Transaction
-        in: path
-        description: transaction to fetch
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: Update Transaction attributes 
-        required: true
-        schema:
-          $ref: "#/definitions/Transaction"
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - name: transaction_id
+          in: path
+          description: transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update transaction data
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
       responses:
         '200':
-          description: Transaction edited successfully
+          description: Transaction update successfully
           schema:
-            $ref: "#/definitions/TransactionResponse"
-        "400":
-          description: Invalid Fields
-        "500":
+            $ref: '#/definitions/TransactionResponse'
+        '400':
+          description: Bad Request
+        '500':
           description: Internal Server Error
-
-
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -274,87 +261,112 @@ definitions:
         type: string
       lastName:
         type: string
-
   LastTransactions:
     type: object
     properties:
-      AccountID:
+      Account_id:
         type: string
       body:
-        $ref: "#/definitions/TransactionsDetails"
-
+        $ref: '#/definitions/TransactionsDetails'
   TransactionsDetails:
     type: object
     properties:
-        transactions:
-          type: array
-          items:
-            type: object
-            properties:
-              transactionId:
-                type: number
-              date:
-                type: string
-              description:
-                type: string
-              amount:
-                type: number
-              balance:
-                type: number
-              transaction type:
-                type: string
-              category:
-                type: string
-              notes:
-                type: string
-        
+      transactions:
+        type: array
+        items:
+          type: object
+          properties:
+            transaction_id:
+              type: string
+            date:
+              type: string
+            description:
+              type: string
+            amount:
+              type: number
+            balance:
+              type: number
+            transaction_type:
+              type: string
+            category:
+              type: string
+            notes:
+              type: string
   TransactionResponse:
-      type: object
-      properties:
-        status: 
-          type: integer
-          example: 200
-        message: 
-          type: string
-          example: details successfully edited
-        schema:
-           $ref: '#/definitions/Transaction'
-  
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+      message:
+        type: string
+        example: details successfully edited
+      body:
+        $ref: '#/definitions/Transaction'
   Transaction:
-      type: object
-      properties:
-        transactionId:
-          type: string
-          description: transaction's ID
-          example: ku4yf684fyj87
-        date:
-          type: string
-          format: date-time
-          description: transaction's date
-          example: '2022-08-02'
-        description:
-          type: string
-          description: transaction's description
-          example: Family trip to usa
-        amount:
-          type: integer
-          format: number
-          description: transaction's amount
-          example: 4380
-        balance:
-          type: integer
-          format: number
-          description: account balance after transaction
-          example: 1000  
-        transaction type:
-          type: string
-          description: transaction's type
-          example: Trip to usa
-        category:
-          type: string
-          description: transaction's category
-          example: guided tour
-        notes:
-          type: string
-          description: transaction's notes
-          example: travel company
+    type: object
+    properties:
+      transaction_id:
+        type: string
+        description: transaction's ID
+      date:
+        type: string
+        description: transaction's date
+      description:
+        type: string
+        description: transaction's description
+      amount:
+        type: integer
+        format: number
+        description: transaction's amount
+      balance:
+        type: integer
+        format: number
+        description: account balance after transaction
+      transaction_type:
+        type: string
+        description: transaction's type
+      category:
+        type: string
+        description: transaction's category
+      notes:
+        type: string
+        description: transaction's notes
+  TransactionExample:
+    type: object
+    properties:
+      transaction_id:
+        type: string
+        description: transaction's ID
+        example: ku4yf684fyj87
+      date:
+        type: string
+        format: date-time
+        description: transaction's date
+        example: '2022-08-02'
+      description:
+        type: string
+        description: transaction's description
+        example: Family trip to usa
+      amount:
+        type: integer
+        format: number
+        description: transaction's amount
+        example: 4380
+      balance:
+        type: integer
+        format: number
+        description: account balance after transaction
+        example: 1000
+      transaction_type:
+        type: string
+        description: transaction's type
+        example: Trip to usa
+      category:
+        type: string
+        description: transaction's category
+        example: guided tour
+      notes:
+        type: string
+        description: transaction's notes
+        example: travel company

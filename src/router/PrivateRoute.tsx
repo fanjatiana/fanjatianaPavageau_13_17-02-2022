@@ -1,17 +1,7 @@
 import { Navigate,useLocation } from 'react-router-dom';
-import { useAppDispatch} from '../app/hooks';
-import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
+import { useAuth } from '../services/useAuth';
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-    const token:boolean = localStorage.getItem("Bearer") !== null;
-    const dispatch = useAppDispatch();
-   
-    const useAuth = () => {
-        // if there is a token, the connection status changes to true and the token is returned
-        if (token) {
-            dispatch(getInfoLoginStatus(true))
-        } return token
-    }
 
     let auth:boolean = useAuth();
     let location:object = useLocation();

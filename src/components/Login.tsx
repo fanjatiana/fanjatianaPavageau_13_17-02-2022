@@ -52,7 +52,7 @@ const Login = () => {
                 </div>
                 <div className="input-wrapper">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password"  {...register("password", { required: true })} onChange={e => { setUserPassword(e.target.value); localStorage.setItem("password", userPassword) }} />
+                    <input type="password" id="password"  {...register("password", { required: true })} onChange={e =>  setUserPassword(e.target.value) }/>
                     <p>{errors.password && "password is required"}</p>
                     
                 </div>

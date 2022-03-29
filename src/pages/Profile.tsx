@@ -20,10 +20,10 @@ const Profile = () => {
     const [userLastName, setUserLastName] = useState<string>('');
     const infosUser = useAppSelector<UserState>((state) => state.user);
     const dispatch = useDispatch<any>();
-    const infoToken: string | null = localStorage.getItem("Bearer")
+    const token: string | null = localStorage.getItem("Bearer")
 
     const handleClickToSave = () => {
-        putInfosUser(infoToken, userFirstName, userLastName, dispatch, setIsLoging);
+        putInfosUser(token, userFirstName, userLastName, dispatch, setIsLoging);
         setIsEditName(false)
     }
 
@@ -33,7 +33,7 @@ const Profile = () => {
 
     if (error) return <NotFound />;
 
-    if (infoToken) {
+    if (data) {
         const userIdentity: string = infosUser.firstName + " " + infosUser.lastName;
 
         return (
