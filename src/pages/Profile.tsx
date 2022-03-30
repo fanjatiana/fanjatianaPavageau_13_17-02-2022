@@ -36,24 +36,30 @@ const Profile = () => {
         return (
             <main className="main bg-dark">
                 <div className="header">
-                    <h1>Welcome back<br />{userIdentity}!</h1>
+                    <h2>Welcome back<br />{userIdentity}!</h2>
                     {!isEditName ? <button className="edit-button" onClick={() => setIsEditName(true)}>Edit Name</button> : <div className='edit-name'>
-                        <div>
-                            <label htmlFor="firstName"></label>
-                            <input type="text" id='firstName' placeholder={infosUser.firstName} onChange={e => { return setUserFirstName(e.target.value) }} />
-                        </div>
-                        <div>
-                            <label htmlFor="lastName"></label>
-                            <input type="text" id='lastName' placeholder={infosUser.lastName} onChange={e => { return setUserLastName(e.target.value) }} />
+                        <div className='input_block'>
+                            <div>
+                                <label htmlFor="firstName"></label>
+                                <input type="text" id='firstName' placeholder={infosUser.firstName} onChange={e => { return setUserFirstName(e.target.value) }} />
+                            </div>
+                            <div>
+                                <label htmlFor="lastName"></label>
+                                <input type="text" id='lastName' placeholder={infosUser.lastName} onChange={e => { return setUserLastName(e.target.value) }} />
+                            </div>
                         </div>
                         <div className='btn_action'>
-                            <button onClick={handleClickToSave}>Save</button>
-                            <button onClick={handleClickToCancel}>Cancel</button>
+                            <div className='btn_save'>
+                                <button onClick={handleClickToSave}>Save</button>
+                            </div>
+                            <div className='btn_cancel'>
+                                <button onClick={handleClickToCancel}>Cancel</button>
+                            </div>
                         </div>
                     </div>
                     }
                 </div>
-                <h2 className="sr-only">Accounts</h2>
+                <h3 className="sr-only">Accounts</h3>
                 {
                     dataAccount.map((obj) =>
                         <Account

@@ -32,13 +32,17 @@
   color: #2c3e50;
 }
 
+.fa {
+  margin-right: 0.1em;
+}
+
 .main-nav a.router-link-exact-active {
   color: #42b983;
 }
 
 .main-nav-item {
   text-decoration: none;
- /* margin-right: 0.5rem;*/
+  /* margin-right: 0.5rem;*/
 }
 
 .main-nav-item:hover {
@@ -135,22 +139,74 @@
   padding-left: 0;
 }
 
-.links_list li:first-child{
+.links_list li:first-child {
   margin-right: 1em;
 }
 
-
-
 .edit-name {
- display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 50%;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  flex-direction: column;
 }
 
+.input_block {
+  display: flex;
+  width: 100%;
+}
+
+.input_block input {
+  padding: 0 1em;
+}
+
+.input_block div:nth-child(1) {
+  margin-right: 2px;
+  width: 50%;
+  text-align: right;
+}
+.input_block div:nth-child(2) {
+  margin-left: 6px;
+  width: 50%;
+  text-align: left;
+}
 .btn_action {
-  margin-left: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
 }
 
+.btn_action .btn_save {
+  width: 100%;
+  text-align: right;
+}
 
+.btn_action .btn_cancel {
+  width: 100%;
+  text-align: left;
+}
+
+.btn_save button {
+  width: 50%;
+  height: 25px;
+  margin-right: 6px;
+}
+
+.btn_cancel button {
+  margin-left: 3px;
+  width: 50%;
+  text-align: left;
+  height: 25px;
+}
+
+#firstName {
+  height: 25px;
+  width: 50%;
+}
+
+#lastName {
+  height: 25px;
+  width: 50%;
+}
