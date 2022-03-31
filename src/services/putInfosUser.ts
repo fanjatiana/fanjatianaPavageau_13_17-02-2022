@@ -1,6 +1,7 @@
 import { getInfosUsers } from "../features/user/usersSlice";
 
 // function for edit user information (edit name)
+
 export const putInfosUser = async (
   token: string | null,
   userFirstName: string,

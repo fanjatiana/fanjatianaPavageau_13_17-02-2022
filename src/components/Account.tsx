@@ -1,3 +1,5 @@
+// user account component (profile page) 
+
 const Account = (props : {title:string, value:string, status:string}) => {
     return (
         <section className="account">

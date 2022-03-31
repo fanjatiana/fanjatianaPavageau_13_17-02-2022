@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../images/argentBankLogo.png'
 import LoginLinks from "../components/LoginLinks"
 
+// navigation component
+
 const Nav = () => {
     return (
         <nav className="main-nav">

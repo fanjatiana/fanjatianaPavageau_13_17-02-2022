@@ -4,9 +4,11 @@ import { infosFeatureItem } from '../constants/arrays';
 import { useAuth } from '../services/useAuth';
 import '../styles/mediaQueries.css'
 
+// home page
+
 const Home = () => {
-    let auth:boolean = useAuth();
-    let location:object = useLocation();
+    let auth: boolean = useAuth();
+    let location: object = useLocation();
     if (!auth) {
 
         return (
@@ -25,7 +27,7 @@ const Home = () => {
                     {
                         infosFeatureItem.map((obj) =>
                             <FeatureItem
-                            key={obj.title}
+                                key={obj.title}
                                 icon={obj.icon}
                                 title={obj.title}
                                 text={obj.text}
@@ -35,10 +37,10 @@ const Home = () => {
                 </section>
             </main>
         );
-        
+
     };
     return <Navigate to="/Profile" state={{ from: location }} replace />;
-   
+
 };
 
 export default Home;

@@ -6,6 +6,8 @@ import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 import { postInfoslogin } from '../services/postInfosLogin';
 import { FormData } from '../typeScript/types';
 
+// login form (sign-in page)
+
 const Login = () => {
 
     const [userEmail, setUserEmail] = useState<string>('');

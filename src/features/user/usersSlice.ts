@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserState } from "../../typeScript/interfaces";
 
+// slice to retrieve user data
+
   const initialState : UserState = {
     firstName: "",
       lastName: "",

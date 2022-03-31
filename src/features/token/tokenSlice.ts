@@ -1,5 +1,6 @@
 import {createSlice,PayloadAction } from "@reduxjs/toolkit";
 
+// slice to retrieve the token
 
 type TokenState = {
   value:string | null;

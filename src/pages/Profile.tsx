@@ -9,6 +9,8 @@ import NotFound from './NotFound';
 import { putInfosUser } from '../services/putInfosUser';
 import { UserState } from '../typeScript/interfaces';
 
+// user account page
+
 const Profile = () => {
     const { isLoading, data, error } = useFetch();
     // display (state update) of the edit name form when the edit Name button is clicked

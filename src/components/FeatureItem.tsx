@@ -1,6 +1,7 @@
 import '../styles/main.css'
 
-// 3 descriptive components of the home page
+// descriptive components (home page)
+
 const FeatureItem = ( props : {icon:string, title:string, text:string}) => {
     return (
         <div className="feature-item">

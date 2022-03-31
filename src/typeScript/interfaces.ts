@@ -1,3 +1,5 @@
+// typing object arrays with typescript
+
 export interface InfosUsers {
   firstName: string;
   lastName: string;
@@ -16,7 +18,6 @@ export interface arrayFeatureItem {
   title: string;
   text: string;
 }
-
 
 export interface UserState{
     firstName: string,

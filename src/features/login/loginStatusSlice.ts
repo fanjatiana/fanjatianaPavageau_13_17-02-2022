@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// slice to update the login statu
+
 type UserState = {
     isLogged : boolean
   }

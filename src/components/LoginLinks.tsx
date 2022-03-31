@@ -4,6 +4,7 @@ import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 import { useAuth } from '../services/useAuth';
 import { UserState } from '../typeScript/interfaces';
 
+// login links ( navigation )
 
 const LoginLinks = () => {
 

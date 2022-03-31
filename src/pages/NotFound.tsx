@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import PiggyBank from '../images/piggy_bank.png'
 import '../styles/main.css'
+
+// 404 error page
+
 const NotFound = () => {
     /* author of this img : "http://www.freepik.com">*/
     return (

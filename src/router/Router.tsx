@@ -5,10 +5,9 @@ import NotFound from '../pages/NotFound'
 import Profile from '../pages/Profile';
 import PrivateRoute from './PrivateRoute';
 
+// path list of application pages
 
 const Router = () => {
-
-    // securing access to the profile page with a private route
     return (
         <>
             <Routes>
