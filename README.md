@@ -1,5 +1,3 @@
-![logo](/src/images/argentBankLogo.png)
-
 ![screenshot](/src/images/Argentbank.png)
 
 This repo contains all the source code of the Argent Bank application.
@@ -79,7 +77,7 @@ The issues : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-AP
 
 ![languages](/src/images/languages-css-_-javascript-_-typescript.svg)
 
-![library-react-js-_-react-hook-form-_-redux](https://user-images.githubusercontent.com/60699482/153428964-75a1e04b-c487-46ac-901a-5a7a2919e45e.svg)
+![libraries](/src/images/libraries-react-js-_-react-hook-form-_redux.svg)
 
 
 ## 4. Authors
@@ -87,4 +85,3 @@ The issues : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-AP
 Project documents and API : OpenClassrooms (https://openclassrooms.com/fr/).
 
 Application development : Pavageau Fanjatiana (student).
-
