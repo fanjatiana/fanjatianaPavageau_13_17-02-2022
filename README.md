@@ -1,44 +1,90 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+![APPLICATION](https://img.shields.io/badge/APPLICATION-ARGENT BANK-green?style=flat)
 
-## Available Scripts
+![screenshot](/images/Argentbank.png)
 
-In the project directory, you can run:
+This repo contains all the source code of the Argent Bank application.
 
-### `npm start`
+To use the Argent Bank application you must install and launch the micro API and have installed Create React App.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 1. Installing the micro API (without docker)
 
-### `npm test`
+### 1.1 Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Argent Bank uses the following tech stack:
 
-### `npm run build`
+- [Node.js v12](https://nodejs.org/en/)
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please make sure you have the right versions and download both packages. You can verify this by using the following commands in your terminal:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
+# Check Node.js version
+node --version
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Check Mongo version
+mongo --version
+```
 
-### `npm run eject`
+If you are working with several versions of NodeJS, we recommend you install nvm. This tool will allow you to easily manage your NodeJS versions.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 1.2 Launching the API
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Github repository : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API
+   
+- Fork the repository
+- Clone it on your computer.
+- The npm install command will allow you to install the dependencies.
+- The npm run dev:server command will allow you to run API.
+- The npm run populate-db command will allow you to populate database with two users
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 2. To launch and use the application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2.1 Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Github repository : https://github.com/fanjatiana/fanjatianaPavageau_13_17-02-2022.git
+
+- Fork the repository
+- Clone it on your computer.
+
+### 2.2 To launch the application
+
+ a. In the project directory, you can run from your terminal :
+
+ `npm start`
+
+ b. Runs the app in the development mode:
+
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.
+You may also see any lint errors in the console.
+
+### 2.3 To test the application
+
+In the document "src -> api -> users.ts " of the project, you should have two users. You can use their email and password to test the application.
+
+
+## 3. Application development
+
+### 3.1 Documentation
+
+The issues : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE.
+
+### 3.2 Development
+
+![languages-html-_-css-_-javascript-_-typescript](https://user-images.githubusercontent.com/60699482/153428928-f8c6f823-2890-4b01-adb5-6849c06ef24e.svg)
+
+![library-react-js-_-react-hook-form-_-redux](https://user-images.githubusercontent.com/60699482/153428964-75a1e04b-c487-46ac-901a-5a7a2919e45e.svg)
+
+
+## 4. Authors
+
+Project documents and API : OpenClassrooms (https://openclassrooms.com/fr/).
+
+Application development : Pavageau Fanjatiana (student).
+
