@@ -1,6 +1,6 @@
-![APPLICATION](https://img.shields.io/badge/APPLICATION-ARGENT BANK-green?style=flat)
+![logo](/src/images/argentBankLogo.png)
 
-![screenshot](/images/Argentbank.png)
+![screenshot](/src/images/Argentbank.png)
 
 This repo contains all the source code of the Argent Bank application.
 
@@ -77,7 +77,7 @@ The issues : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-AP
 
 ### 3.2 Development
 
-![languages-html-_-css-_-javascript-_-typescript](https://user-images.githubusercontent.com/60699482/153428928-f8c6f823-2890-4b01-adb5-6849c06ef24e.svg)
+![languages](/src/images/languages-css-_-javascript-_-typescript.svg)
 
 ![library-react-js-_-react-hook-form-_-redux](https://user-images.githubusercontent.com/60699482/153428964-75a1e04b-c487-46ac-901a-5a7a2919e45e.svg)
 
