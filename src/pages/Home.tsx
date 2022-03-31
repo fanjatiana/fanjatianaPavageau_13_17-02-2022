@@ -1,14 +1,14 @@
 import { Navigate} from 'react-router-dom';
-import { useAppSelector } from '../app/hooks';
 import FeatureItem from '../components/FeatureItem';
 import { infosFeatureItem } from '../constants/arrays';
+import { useAuth } from '../services/useAuth';
 import '../styles/mediaQueries.css'
 
 // home page
 
 const Home = () => {
-    const logged = useAppSelector((state) => state.login.isLogged)
-    if (!logged) {
+    let auth: boolean = useAuth();
+    if (!auth) {
 
         return (
             <main>
