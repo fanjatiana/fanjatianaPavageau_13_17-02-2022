@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 
     // if we have no authentication, redirect to the sign in page when someone write "Profile" in url
     if (!auth) {
-        return <Navigate to="/Sign-in" />;
+        return <Navigate to="/sign-in" />;
     };
     return children;
 }

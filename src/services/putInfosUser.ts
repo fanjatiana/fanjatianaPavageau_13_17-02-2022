@@ -6,7 +6,7 @@ export const putInfosUser = async (
   token: string | null,
   userFirstName: string,
   userLastName: string,
-  dispatch: Function,
+  dispatch: Function
 ) => {
   fetch("http://localhost:3001/api/v1/user/profile", {
     method: "PUT",
@@ -18,11 +18,15 @@ export const putInfosUser = async (
       firstName: userFirstName,
       lastName: userLastName,
     }),
-  }).then(async (response) => {
-    const data = await response.json();
-    if (response.ok) {
-      console.log(data.body);
-      dispatch(getInfosUsers(data.body));
-    }
-  });
+  })
+    .then(async (response) => {
+      const data = await response.json();
+      if (response.ok) {
+        console.log(data.body);
+        dispatch(getInfosUsers(data.body));
+      }
+    })
+    .catch((error) => {
+      console.error("Oops une erreur s'est produite !", error);
+    });
 };

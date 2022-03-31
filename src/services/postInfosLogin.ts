@@ -5,7 +5,7 @@ import { getToken } from "../features/token/tokenSlice";
 
 export const postInfoslogin = async (
   credentials: object,
-  setUserNotFoundMessage:any,
+  setUserNotFoundMessage: any,
   dispatch: Function,
   navigate: Function
 ) => {
@@ -17,21 +17,18 @@ export const postInfoslogin = async (
     },
     body: JSON.stringify(credentials),
   })
-    .then((response) =>  response.json())
+    .then((response) => response.json())
     .then((data) => {
-      if (data.status !== 200) {
-        setUserNotFoundMessage("identifiant ou mot de passe inconnu")
-        dispatch(getInfoLoginStatus(false));
-      }
       console.log("Success:", data);
       dispatch(getToken(data.body.token));
       localStorage.setItem("Bearer", data.body.token);
       dispatch(getInfoLoginStatus(true));
-      navigate("/Profile");
-      return data
+      navigate("/profile");
+      return data;
     })
     .catch((error) => {
       console.error("error" + error.message);
-      return error
+      setUserNotFoundMessage("identifiant ou mot de passe inconnu");
+      dispatch(getInfoLoginStatus(false));
     });
 };

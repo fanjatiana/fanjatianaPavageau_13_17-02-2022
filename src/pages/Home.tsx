@@ -38,7 +38,7 @@ const Home = () => {
         );
 
     };
-    return <Navigate to="/Profile" />;
+    return <Navigate to="/profile" />;
 
 };
 
