@@ -160,7 +160,7 @@ paths:
           required: true
         - name: account_id
           in: path
-          description: account id
+          description: account data recovery
           required: true
           type: string
         - name: transaction_id
@@ -194,7 +194,7 @@ paths:
           required: true
         - name: account_id
           in: path
-          description: account id
+          description: account data recovery
           required: true
           type: string
         - name: transaction_id
