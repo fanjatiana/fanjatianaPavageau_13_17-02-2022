@@ -1,15 +1,14 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
+import { useAppSelector } from '../app/hooks';
 import FeatureItem from '../components/FeatureItem';
 import { infosFeatureItem } from '../constants/arrays';
-import { useAuth } from '../services/useAuth';
 import '../styles/mediaQueries.css'
 
 // home page
 
 const Home = () => {
-    let auth: boolean = useAuth();
-    let location: object = useLocation();
-    if (!auth) {
+    const logged = useAppSelector((state) => state.login.isLogged)
+    if (!logged) {
 
         return (
             <main>
@@ -39,7 +38,7 @@ const Home = () => {
         );
 
     };
-    return <Navigate to="/Profile" state={{ from: location }} replace />;
+    return <Navigate to="/Profile" />;
 
 };
 

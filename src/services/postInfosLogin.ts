@@ -1,3 +1,4 @@
+import { getInfoLoginStatus } from "../features/login/loginStatusSlice";
 import { getToken } from "../features/token/tokenSlice";
 
 // function for post authentication data
@@ -20,10 +21,12 @@ export const postInfoslogin = async (
     .then((data) => {
       if (data.status !== 200) {
         setUserNotFoundMessage("identifiant ou mot de passe inconnu")
+        dispatch(getInfoLoginStatus(false));
       }
       console.log("Success:", data);
       dispatch(getToken(data.body.token));
       localStorage.setItem("Bearer", data.body.token);
+      dispatch(getInfoLoginStatus(true));
       navigate("/Profile");
       return data
     })

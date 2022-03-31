@@ -7,7 +7,7 @@ type UserState = {
   }
   
   const initialState : UserState = {
-    isLogged : true
+    isLogged : false
   }
   
   
@@ -18,8 +18,7 @@ type UserState = {
       getInfoLoginStatus : (state,action : PayloadAction<boolean>)=> {
         state.isLogged= action.payload;
       }
-    }
-    
+    }    
   })
   
   export const {getInfoLoginStatus} = loginStatusSlice.actions;

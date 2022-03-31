@@ -12,9 +12,9 @@ const Login = () => {
 
     const [userEmail, setUserEmail] = useState<string>('');
     const [userPassword, setUserPassword] = useState<string>('');
-    const [rememberMe, setRememberMe] = useState<boolean>(false) 
+    const [rememberMe, setRememberMe] = useState<boolean>(false)
     // state for display of an error message if username or password unknown
-    const [userNotFoundMessage,setUserNotFoundMessage] = useState<string>("") 
+    const [userNotFoundMessage, setUserNotFoundMessage] = useState<string>("")
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
@@ -29,8 +29,7 @@ const Login = () => {
 
     // submit form data
     const onSubmit = (credentials: object) => {
-        postInfoslogin(credentials,setUserNotFoundMessage, dispatch,navigate);
-        dispatch(getInfoLoginStatus(true));
+        postInfoslogin(credentials, setUserNotFoundMessage, dispatch, navigate);
     }
 
 
@@ -45,18 +44,18 @@ const Login = () => {
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 method="POST">
-                    <p className='error_400'>{userNotFoundMessage}</p>
+                <p className='error_400'>{userNotFoundMessage}</p>
                 <div className="input-wrapper">
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username" value={userEmail} {...register("email", { required: true })} onChange={e => { setUserEmail(e.target.value); localStorage.setItem("email", userEmail) }} />
                     <p>{errors.email?.type === 'required' && "email is required"}</p>
-                    
+
                 </div>
                 <div className="input-wrapper">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" value={userPassword} {...register("password", { required: true })} onChange={e =>  setUserPassword(e.target.value) }/>
+                    <input type="password" id="password" value={userPassword} {...register("password", { required: true })} onChange={e => setUserPassword(e.target.value)} />
                     <p>{errors.password && "password is required"}</p>
-                    
+
                 </div>
                 <div className="input-remember">
                     <input type="checkbox" id="remember-me" onChange={() => handleChangeChekbox()} />

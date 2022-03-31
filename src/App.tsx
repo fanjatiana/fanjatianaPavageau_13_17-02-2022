@@ -4,10 +4,7 @@ import Footer from './containers/Footer';
 import Header from './containers/Header';
 import Router from './router/Router'
 
-
 function App() {
-
-
   return (
     <>
       <BrowserRouter>
