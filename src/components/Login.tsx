@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../app/hooks';
-import { getInfoLoginStatus } from '../features/login/loginStatusSlice';
 import { postInfoslogin } from '../services/postInfosLogin';
 import { FormData } from '../typeScript/types';
 
