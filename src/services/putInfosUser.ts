@@ -22,7 +22,7 @@ export const putInfosUser = async (
     .then(async (response) => {
       const data = await response.json();
       if (response.ok) {
-        console.log(data.body);
+        console.log(data.body)
         dispatch(getInfosUsers(data.body));
       }
     })

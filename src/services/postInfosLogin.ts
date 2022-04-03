@@ -19,7 +19,6 @@ export const postInfoslogin = async (
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
       dispatch(getToken(data.body.token));
       localStorage.setItem("Bearer", data.body.token);
       dispatch(getInfoLoginStatus(true));

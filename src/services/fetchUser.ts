@@ -29,9 +29,7 @@ export const useFetch = () => {
           return response.json();
         })
         .then((data) => {
-          console.log("Success:", data);
           setData(data);
-          localStorage.setItem("Bearer", infoToken);
           dispatch(getInfosUsers(data.body));
           setLoading(false);
         });

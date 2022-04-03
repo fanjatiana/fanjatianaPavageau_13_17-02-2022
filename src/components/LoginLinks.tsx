@@ -10,8 +10,7 @@ const LoginLinks = () => {
     const dispatch = useAppDispatch();
     const infosUser: UserState = useAppSelector((state) => state.user);
     const logged = useAppSelector((state) => state.login.isLogged)
-    console.log(logged);
-
+ 
 
     /* change the display of the login links according to the data and the token. 
     We update the connection status and apply actions to the click of the links */

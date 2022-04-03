@@ -6,7 +6,6 @@ import { getInfoLoginStatus } from "../features/login/loginStatusSlice";
 export const useAuth = () => {
   const token: boolean = localStorage.getItem("Bearer") !== null;
   const dispatch = useAppDispatch();
-  console.log(token)
   // if there is a token, the connection status changes to true and the token is returned
   if (token) {
     dispatch(getInfoLoginStatus(true));
