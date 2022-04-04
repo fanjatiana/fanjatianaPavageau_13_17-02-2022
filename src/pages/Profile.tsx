@@ -22,6 +22,7 @@ const Profile = () => {
     const infosUser = useAppSelector<UserState>((state) => state.user);
     const dispatch = useDispatch<any>();
     const token: string | null = localStorage.getItem("Bearer");
+ 
 
     /* put (fetch method) edit name form data with update of the user's identity on the profile page */
     /* setIsEditName(false) => closing the form */

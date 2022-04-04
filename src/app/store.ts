@@ -5,7 +5,7 @@ import loginStatusReducer from "../features/login/loginStatusSlice"
 
 export const store = configureStore({
   reducer: {
-    token: tokenReducer,
+    //token: tokenReducer,
     user: usersReducer,
     login : loginStatusReducer,
   },
