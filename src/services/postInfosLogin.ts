@@ -19,7 +19,6 @@ export const postInfoslogin = async (
   })
     .then((response) => response.json())
     .then((data) => {
-      //dispatch(getToken(data.body.token));
       localStorage.setItem("Bearer", data.body.token);
       dispatch(getInfoLoginStatus(true));
       navigate("/profile");

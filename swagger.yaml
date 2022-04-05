@@ -112,12 +112,14 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
+          
+          
   /user/accounts/{account_id}:
     get:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Account Module
       summary: User Account API
       description: API for fetching a user Account
       produces:
@@ -142,12 +144,13 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
+          
   /user/accounts/{account_id}/transactions/{transaction_id}:
     get:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Account Module
       summary: transaction's details of User account
       description: API for fetching details of a transaction
       produces:
@@ -177,11 +180,53 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
+          
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Account Module
+      summary: post new information of transaction
+      description: add a transaction information
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: "string"
+          required: true
+        - in: path
+          type: number
+          name: account_id
+          description: account id
+          required: true
+        - in: path
+          type: number
+          name: transaction_id
+          description: transaction id
+          required: true
+        - in: body
+          name: body
+          description: Post new information of transaction
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionWithNewInfo'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Additional transaction informations created successully
+          schema:
+            $ref: '#/definitions/PostInfosTransactionResponse'  
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          
     put:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Account Module
       summary: Update transaction
       description: Update user Transaction
       produces:
@@ -194,7 +239,7 @@ paths:
           required: true
         - name: account_id
           in: path
-          description: account data recovery
+          description: account id
           required: true
           type: string
         - name: transaction_id
@@ -217,6 +262,50 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
+          
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Account Module
+      summary: Delete information  transaction
+      description: deleteinformation transaction selected with id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: account_id
+          type: string
+          required: true
+          description:  account id
+        - in: path
+          name: transaction_id
+          type: string
+          required: true
+          description:  transaction id
+        - in: body
+          name: body
+          description: transaction selected
+          required: true
+          schema:
+            $ref: '#/definitions/DeleteTransaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: transaction deleted successully
+          schema:
+            $ref: '#/definitions/DeleteTransactionResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  
+          
+          
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -278,6 +367,7 @@ definitions:
         type: string
       body:
         $ref: '#/definitions/TransactionsDetails'
+        
   TransactionsDetails:
     type: object
     properties:
@@ -302,6 +392,7 @@ definitions:
               type: string
             notes:
               type: string
+              
   TransactionResponse:
     type: object
     properties:
@@ -310,9 +401,20 @@ definitions:
         example: 200
       message:
         type: string
-        example: details successfully edited
+        example: successfully
       body:
         $ref: '#/definitions/Transaction'
+        
+  DeleteTransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+      message:
+        type: string
+        example: transaction deleted successfully
+        
   Transaction:
     type: object
     properties:
@@ -342,6 +444,57 @@ definitions:
       notes:
         type: string
         description: transaction's notes
+        
+  TransactionWithNewInfo:
+    type: object
+    properties:
+      transaction_id:
+        type: string
+        description: transaction's ID
+      date:
+        type: string
+        description: transaction's date
+      description:
+        type: string
+        description: transaction's description
+      amount:
+        type: integer
+        format: number
+        description: transaction's amount
+      balance:
+        type: integer
+        format: number
+        description: account balance after transaction
+      transaction_type:
+        type: string
+        description: transaction's type
+      category:
+        properties:
+          travel:
+            type: string
+            description: travel information
+      notes:
+        type: string
+        description: transaction's notes
+        
+  PostInfosTransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+      message:
+        type: string
+        example: successfully
+      body:
+        $ref: '#/definitions/TransactionWithNewInfo'
+        
+  DeleteTransaction:
+    properties:
+       transaction_id:
+          type: string
+          description: user email
+        
   TransactionExample:
     type: object
     properties:
