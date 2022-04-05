@@ -209,7 +209,7 @@ paths:
           description: Post new information of transaction
           required: true
           schema:
-            $ref: '#/definitions/TransactionWithNewInfo'
+            $ref: '#/definitions/AddNewInfos'
       produces:
         - application/json
       responses:
@@ -269,7 +269,7 @@ paths:
       tags:
         - Account Module
       summary: Delete information  transaction
-      description: deleteinformation transaction selected with id
+      description: delete information transaction selected with id
       parameters:
         - in: header
           name: Authorization
@@ -291,14 +291,14 @@ paths:
           description: transaction selected
           required: true
           schema:
-            $ref: '#/definitions/DeleteTransaction'
+            $ref: '#/definitions/AddNewInfos'
       produces:
         - application/json
       responses:
         '200':
           description: transaction deleted successully
           schema:
-            $ref: '#/definitions/DeleteTransactionResponse'
+            $ref: '#/definitions/TransactionResponse'
         '400':
           description: Bad Request
         '500':
@@ -338,7 +338,7 @@ definitions:
     type: object
     properties:
       status:
-        type: integer
+        type: string
       message:
         type: string
       body:
@@ -378,6 +378,9 @@ definitions:
           properties:
             transaction_id:
               type: string
+            beneficiary:
+              type: string
+              description: transaction's beneficiary
             date:
               type: string
             description:
@@ -405,22 +408,15 @@ definitions:
       body:
         $ref: '#/definitions/Transaction'
         
-  DeleteTransactionResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-        example: 200
-      message:
-        type: string
-        example: transaction deleted successfully
-        
   Transaction:
     type: object
     properties:
       transaction_id:
         type: string
         description: transaction's ID
+      beneficiary:
+        type: string
+        description: transaction's beneficiary
       date:
         type: string
         description: transaction's date
@@ -451,6 +447,9 @@ definitions:
       transaction_id:
         type: string
         description: transaction's ID
+      beneficiary:
+        type: string
+        description: transaction's beneficiary  
       date:
         type: string
         description: transaction's date
@@ -458,24 +457,37 @@ definitions:
         type: string
         description: transaction's description
       amount:
-        type: integer
+        type: string
         format: number
         description: transaction's amount
       balance:
-        type: integer
+        type: string
         format: number
         description: account balance after transaction
       transaction_type:
         type: string
         description: transaction's type
       category:
-        properties:
-          travel:
-            type: string
-            description: travel information
-      notes:
-        type: string
+       type: string
+       description: transaction's category
+      transmitter :
+        type : string
+      notes :
+        type : string
         description: transaction's notes
+        
+  AddNewInfos :
+    type : object
+    properties:
+      id : 
+        type : string
+      body :
+        type: object
+        properties :
+          transmitter :
+            type : string
+          notes :
+            type : string
         
   PostInfosTransactionResponse:
     type: object
@@ -489,47 +501,3 @@ definitions:
       body:
         $ref: '#/definitions/TransactionWithNewInfo'
         
-  DeleteTransaction:
-    properties:
-       transaction_id:
-          type: string
-          description: transaction who will be deleted
-        
-  TransactionExample:
-    type: object
-    properties:
-      transaction_id:
-        type: string
-        description: transaction's ID
-        example: ku4yf684fyj87
-      date:
-        type: string
-        format: date-time
-        description: transaction's date
-        example: '2022-08-02'
-      description:
-        type: string
-        description: transaction's description
-        example: Family trip to usa
-      amount:
-        type: integer
-        format: number
-        description: transaction's amount
-        example: 4380
-      balance:
-        type: integer
-        format: number
-        description: account balance after transaction
-        example: 1000
-      transaction_type:
-        type: string
-        description: transaction's type
-        example: Trip to usa
-      category:
-        type: string
-        description: transaction's category
-        example: guided tour
-      notes:
-        type: string
-        description: transaction's notes
-        example: travel company
