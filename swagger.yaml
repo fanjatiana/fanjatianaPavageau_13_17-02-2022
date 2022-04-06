@@ -263,6 +263,7 @@ paths:
         '500':
           description: Internal Server Error
           
+  /user/accounts/{account_id}/transactions/{transaction_id}/{item-to-delete}:        
     delete:
       security:
         - Bearer: []
@@ -286,6 +287,11 @@ paths:
           type: string
           required: true
           description:  transaction id
+        - in: path
+          name: item-to-delete
+          type: string
+          required: true
+          description:  item selected to delete
         - in: body
           name: body
           description: transaction selected
