@@ -2,7 +2,8 @@ import { Navigate} from 'react-router-dom';
 import FeatureItem from '../components/FeatureItem';
 import { infosFeatureItem } from '../constants/arrays';
 import { useAuth } from '../services/useAuth';
-import '../styles/mediaQueries.css'
+import '../styles/mediaQueries.css';
+import '../styles/main.css'
 
 // home page
 
@@ -11,7 +12,7 @@ const Home = () => {
     if (!auth) {
 
         return (
-            <main>
+            <main className='home_container'>
                 <div className="hero">
                     <section className="hero-content">
                         <h2 className="sr-only">Promoted Content</h2>

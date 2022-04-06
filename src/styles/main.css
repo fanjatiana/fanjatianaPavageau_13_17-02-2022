@@ -1,5 +1,10 @@
 .main {
   flex: 1;
+ 
+}
+
+.main_profile{
+  margin-bottom: 7em;
 }
 
 .bg-dark {
@@ -215,4 +220,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.home_container{
+  margin-bottom:3em;
 }

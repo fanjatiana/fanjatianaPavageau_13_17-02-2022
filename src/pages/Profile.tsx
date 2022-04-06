@@ -41,7 +41,7 @@ const Profile = () => {
         const userIdentity: string = infosUser.firstName + " " + infosUser.lastName;
 
         return (
-            <main className="main bg-dark">
+            <main className="main main_profile bg-dark">
                 <div className="header">
                     <h2>Welcome back<br />{userIdentity}!</h2>
                     {!isEditName ? <button className="edit-button" onClick={() => setIsEditName(true)}>Edit Name</button> : <div className='edit-name'>
